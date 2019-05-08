@@ -1,4 +1,4 @@
-### Small Test Project
+# Small Test Project
 I'm making a game..a mmo? maybe a mmorpg?
 it will be something one day..
 If you want to use any code for your own projects feel free.
