@@ -1,11 +1,19 @@
 export default class Box {
-    constructor(x, y, h, w) {
-        this.pos = [x, y];
-        this.size = [h, w];
+    constructor(x, y, w, h) {
+        this.x = x;
+        this.y = y;
+        this.h = h;
+        this.w = w;
+    }
+
+    isInside(x,y){
+        let isInX = x>this.x && x<this.x+this.w;
+        let isInY = y>this.y && x<this.y+this.h;
+        console.log(isInX&&isInY);
     }
 
     draw(ctx) {
         ctx.strokeStyle = "red";
-        ctx.strokeRect(this.pos[0], this.pos[1], this.size[0], this.size[1]);
+        ctx.strokeRect(this.x,this.y,this.w,this.h);
     }
 }

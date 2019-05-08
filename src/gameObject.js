@@ -1,4 +1,5 @@
 import Renderable from "./Renderable";
+import Box from "./phybox";
 
 export default class GameObject {
     constructor() {

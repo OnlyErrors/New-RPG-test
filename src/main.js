@@ -7,10 +7,13 @@ import mapTiles from "./images/dungeon_sheet.png"
 
 let engine = new Engine();
 
+engine.phyDebug = true;
+
 let map = new Map(testmap, mapTiles);
 engine.addObject(map);
+engine.addColliders(map.getColliders())
 
-let player = new Player(50, 50);
+let player = new Player(150, 150);
 
 engine.addObject(player);
 

@@ -13,6 +13,7 @@ export default class Engine {
         //this.canvas.style.width = window.innerWidth+"px";
         //this.canvas.style.height = window.innerHeight+"px";
 
+        this.phyDebug = false;
 
         document.body.appendChild(this.canvas);
 
@@ -22,6 +23,7 @@ export default class Engine {
         this.lastTime = new Date().getTime();
 
         this.objs = [];
+        this.colliders = [];
 
         this.input = new Input();
 
@@ -34,6 +36,12 @@ export default class Engine {
         } else {
             console.error("Invalid Object Added. Not GameObject")
         }
+    }
+
+    addColliders(colliders) {
+        colliders.forEach(colliders => {
+            this.colliders.push(colliders);
+        });
     }
 
     loop() {
@@ -51,6 +59,12 @@ export default class Engine {
         this.objs.forEach(obj => {
             obj.draw(this.ctx);
         });
+
+        if (this.phyDebug) {
+            this.colliders.forEach(colliders => {
+                colliders.draw(this.ctx);
+            });
+        }
 
         this.lastTime = time;
         window.requestAnimationFrame(this.loop.bind(this));

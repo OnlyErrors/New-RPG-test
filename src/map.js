@@ -2,14 +2,15 @@ import GameObject from "./gameObject";
 import Renderable from "./Renderable";
 import Box from "./phybox";
 
-
 export default class Map extends GameObject {
-    constructor(mapjson, mapImg) {
+    constructor( mapjson, mapImg) {
         super();
 
         const SCALE = 3;
 
         this.Renderable = new Renderable(mapImg, SCALE, 0, 240, 24, 10, 1);
+
+        this.colliders = [];
 
         this.data = mapjson;
 
@@ -17,12 +18,14 @@ export default class Map extends GameObject {
             if (layer.type == "objectgroup") {
                 layer.objects.forEach(obj => {
                     console.log(obj);
-                    this.addChild(new Box(obj.x, obj.y, obj.width, obj.Height));
+                    this.colliders.push(new Box(obj.x, obj.y, obj.width, obj.Height));
                 });
             }
         });
+    }
 
-
+    getColliders(){
+        return this.colliders;
     }
 
     draw(ctx) {
